@@ -41,6 +41,16 @@ module.exports = bookshelf.Model.extend(merge({
     return this.hasMany(Device, 'user_id')
   },
 
+  events: function () {
+    return this.hasMany(Post).query(q => q.leftJoin('groups', 'groups.group_data_id', 'posts.id')
+      .leftJoin('group_memberships', 'group_memberships.group_id', 'groups.id')
+      .where('posts.type', 'event')
+      .andWhere('group_memberships.user_id', this.id)
+      .andWhere('group_memberships.active', true)
+      .andWhere('posts.end_time', '>', new Date())
+    )
+  },
+
   inAppNotifications: function () {
     return this.hasMany(Notification)
     .query({where: {'notifications.medium': Notification.MEDIUM.InApp}})

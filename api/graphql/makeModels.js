@@ -111,6 +111,7 @@ export default async function makeModels (userId, isAdmin) {
         'memberships',
         'moderatedCommunityMemberships',
         'locationObject',
+        {events: {querySet: true}},
         {posts: {querySet: true}},
         {projects: {querySet: true}},
         {comments: {querySet: true}},

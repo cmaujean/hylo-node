@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add projects to the User model and Person type
+- Add events and projects to the User model and Person type
 
 ## [1.4.1]
 
